@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     prefixer = require('gulp-autoprefixer'),
     uglify = require('gulp-uglify'),
     rigger = require('gulp-rigger'),
+    htmlmin = require('gulp-htmlmin'),
     cssmin = require('gulp-minify-css'),
     // imagemin = require('gulp-imagemin'),
     // pngquant = require('imagemin-pngquant'),
@@ -34,6 +35,11 @@ gulp.task('clean', function (cb) {
 gulp.task('html:build', function () {
     gulp.src(path.src.html)
         .pipe(rigger())
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            minifyJS: true,
+            removeComments: true
+        }))
         .pipe(gulp.dest(path.build.html));
 });
 
