@@ -1,4 +1,21 @@
 $(function () {
+    function iOS() {
+        var iDevices = [
+            'iPad Simulator',
+            'iPhone Simulator',
+            'iPod Simulator',
+            'iPad',
+            'iPhone',
+            'iPod'
+        ];
+        if (!!navigator.platform) {
+            while (iDevices.length) {
+                if (navigator.platform === iDevices.pop()){ return true; }
+            }
+        }
+        return false;
+    }
+
     $('.equalizer').rhEqualizer();
     $('.equalizer').rhEqualizer('setContainerPadding', ($(window).height() / 2 - 70) + 'px 0 0 0');
 
@@ -67,8 +84,8 @@ $(function () {
     });
 
     audio.addEventListener('stalled', function () {
-        console.log('stalled');
-        $('.equalizer').rhEqualizer('toggleActive', 'stop');
+        // console.log('stalled');
+        // $('.equalizer').rhEqualizer('toggleActive', 'stop');
     });
 
     audio.addEventListener('ended', function () {
@@ -82,6 +99,9 @@ $(function () {
         if (status == 'pause') {
             audio.play();
             audio.volume = volume;
+            if (iOS()) {
+                $(this).remove();
+            }
             $(this).attr('data-status', 'play');
         } else {
             audio.volume = 0;
