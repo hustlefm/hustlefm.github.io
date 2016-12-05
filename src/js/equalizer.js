@@ -28,33 +28,16 @@ $(function () {
         $('.btn-show-just-missed').css('display', 'none');
     });
 
-    $.SHOUTcast({
-        host: '93.188.164.219',
-        port: 8000,
-        interval: 2000,
-        stats: function () {
-            var songTitle = this.get('songtitle'),
-                artist = songTitle.split(' - ')[0].trim().replace(/^.+bmp/i, ''),
-                title = songTitle.split(' - ')[1].trim().replace(/^.+bpm/i, '');
-            $('.shoutcast-now-playing.current-artist').text(artist);
-            $('.shoutcast-now-playing.current-track').text(title);
-        }
-    }).startStats();
-
-    $.SHOUTcast({
-        host: '93.188.164.219',
-        port: 8000,
-        playedInterval: 20000,
-        played: function (tracks) {
-            $('.shoutcast-just-missed').html('')
-                .append('<div class="popup-close-btn" onclick="$(\'.shoutcast-just-missed\').css(\'display\', \'none\')"><i class="fa fa-times"></i></div>');
-            $.each(tracks, function (k, track) {
-                if (k > 0 && k < 6) {
-                    $('.shoutcast-just-missed').append('<div class="cctrack"><div class="ccinfos"><div class="cctitle">' + track.title.replace(/\d{1,3}\sbpm/, '') + '</div></div></div>');
-                }
-            });
-        }
-    }).startPlayed();
+    var ices = new Ices({
+        host: '93.188.164.219'
+    });
+    ices.refresh(2000, '/ices', function (stream) {
+        var songTitle = stream.title,
+            artist = songTitle.split(' - ')[0].trim().replace(/^.+bmp/i, ''),
+            title = songTitle.split(' - ')[1].trim().replace(/^.+bpm/i, '');
+        $('.shoutcast-now-playing.current-artist').text(artist);
+        $('.shoutcast-now-playing.current-track').text(title);
+    });
 
     $(window).resize(function () {
         $('.equalizer').rhEqualizer('setContainerPadding', ($(window).height() / 2 - 70) + 'px 0 0 0');

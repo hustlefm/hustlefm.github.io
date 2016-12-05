@@ -1,4 +1,4 @@
-//= shoutcast.min.js
+//= ices.js
 
 //= jquery.rhEqualizer.js
 
