@@ -48,10 +48,12 @@ $(function () {
         volume = 1;
 
     audio.addEventListener('play', function () {
+        console.log('play');
         $('.equalizer').rhEqualizer('toggleActive', 'start');
     });
 
     audio.addEventListener('volumechange', function () {
+        console.log('volume == ' + audio.volume);
         if (audio.volume == 0) {
             $('.equalizer').rhEqualizer('toggleActive', 'stop');
         } else {
@@ -60,14 +62,17 @@ $(function () {
     });
 
     audio.addEventListener('pause', function () {
+        console.log('stop');
         $('.equalizer').rhEqualizer('toggleActive', 'stop');
     });
 
     audio.addEventListener('stalled', function () {
+        console.log('stalled');
         $('.equalizer').rhEqualizer('toggleActive', 'stop');
     });
 
     audio.addEventListener('ended', function () {
+        console.log('ended');
         $('.equalizer').rhEqualizer('toggleActive', 'stop');
     });
 
