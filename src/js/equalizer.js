@@ -31,7 +31,7 @@ $(function () {
     var ices = new Ices({
         host: '93.188.164.219'
     });
-    ices.refresh(2000, '/ices', function (stream) {
+    ices.refresh(2000, function (stream) {
         var songTitle = stream.title,
             artist = songTitle.split(' - ')[0].trim().replace(/^.+bmp/i, ''),
             title = songTitle.split(' - ')[1].trim().replace(/^.+bpm/i, '');

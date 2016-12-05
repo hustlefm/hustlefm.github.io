@@ -6,13 +6,12 @@
         var port = options.port || 80;
 
         return {
-            refresh: function (interval, mount, callback) {
+            refresh: function (interval, callback) {
                 setInterval(function () {
                     $.ajax({
                         url: 'http://' + host + ':' + port + '/stream_info.php',
                         success: function (data) {
-                            var stream = data[mount];
-                            callback(stream);
+                            callback(data);
                         }
                     })
                 }, interval);
