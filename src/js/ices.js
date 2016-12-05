@@ -11,7 +11,7 @@
                     $.ajax({
                         url: 'http://' + host + ':' + port + '/stream_info.php',
                         success: function (data) {
-                            callback(data);
+                            callback(JSON.parse(data));
                         }
                     })
                 }, interval);
