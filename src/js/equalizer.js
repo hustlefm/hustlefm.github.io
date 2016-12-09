@@ -85,7 +85,7 @@ $(function () {
             audio.src = audio.currentSrc;
             audio.play();
             console.log('audio src is refreshed');
-        })
+        }, 1);
     });
 
     audio.addEventListener('stalled', function () {
