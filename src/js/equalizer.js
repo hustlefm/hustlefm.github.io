@@ -48,7 +48,7 @@ $(function () {
     var ices = new Ices({
         host: '93.188.164.219'
     });
-    ices.refresh(2000, function (stream) {
+    ices.refresh(2500, function (stream) {
         var songTitle = stream.title,
             artist = songTitle.split(' - ')[0].trim().replace(/^.+bmp/i, ''),
             title = songTitle.split(' - ')[1].trim().replace(/^.+bpm/i, '');
@@ -81,6 +81,7 @@ $(function () {
     audio.addEventListener('pause', function () {
         console.log('play -> pause');
         // $('.equalizer').rhEqualizer('toggleActive', 'stop');
+        audio.src = audio.currentSrc;
         audio.play();
     });
 
