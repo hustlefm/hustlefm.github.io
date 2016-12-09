@@ -81,8 +81,11 @@ $(function () {
     audio.addEventListener('pause', function () {
         console.log('play -> pause');
         // $('.equalizer').rhEqualizer('toggleActive', 'stop');
-        audio.src = audio.currentSrc;
-        audio.play();
+        setTimeout(function () {
+            audio.src = audio.currentSrc;
+            audio.play();
+            console.log('audio src is refreshed');
+        })
     });
 
     audio.addEventListener('stalled', function () {
