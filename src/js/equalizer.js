@@ -79,8 +79,9 @@ $(function () {
     });
 
     audio.addEventListener('pause', function () {
-        console.log('stop');
-        $('.equalizer').rhEqualizer('toggleActive', 'stop');
+        console.log('play -> pause');
+        // $('.equalizer').rhEqualizer('toggleActive', 'stop');
+        audio.play();
     });
 
     audio.addEventListener('stalled', function () {
@@ -89,8 +90,13 @@ $(function () {
     });
 
     audio.addEventListener('ended', function () {
-        console.log('ended');
+        console.log('play -> ended');
         $('.equalizer').rhEqualizer('toggleActive', 'stop');
+    });
+
+    audio.addEventListener('stop', function () {
+        console.log('stop -> play');
+        $('.equalizer').rhEqualizer('toggleActive', 'start');
     });
 
     $('.btn-play').on('click', function () {
