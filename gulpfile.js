@@ -20,10 +20,10 @@ var path = {
     },
     dist: {
         html: 'dist/',
-        js: 'build/js/',
-        css: 'build/css/',
+        js: 'dist/js/',
+        css: 'dist/css/',
         // img: 'build/img',
-        fonts: 'build/fonts/'
+        fonts: 'dist/fonts/'
     },
     src: {
         html: 'src/index.html',
