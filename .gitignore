@@ -1,4 +1,3 @@
 .idea
-build
-dist
+.cache
 node_modules
