@@ -12,5 +12,7 @@ window.addEventListener('load', function () {
     clearInterval(countDown)
 
     ym(41224924,'reachGoal','redirect')
+
+    window.location.href = 'http://radio-hustle.com'
   }, 10000)
 })
