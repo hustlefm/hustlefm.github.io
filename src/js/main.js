@@ -1,7 +1,16 @@
-//= bootstrap.min.js
+window.addEventListener('load', function () {
+  var timer = 10
+  var countDown = setInterval(function () {
+    var element = document.getElementById('countdown')
 
-//= ices.js
+    element.innerText = timer + ''
 
-//= jquery.rhEqualizer.js
+    timer--
+  }, 1000)
 
-//= equalizer.js
+  setTimeout(function () {
+    clearInterval(countDown)
+
+    ym(41224924,'reachGoal','redirect')
+  }, 10000)
+})
